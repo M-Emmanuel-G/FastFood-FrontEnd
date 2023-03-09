@@ -11,6 +11,7 @@ import { PaymentPage } from "../pages/PayTheBill/payment"
 import { ProfilePage } from "../pages/ProfilePage/profilePage"
 import { RegisterPage } from "../pages/RegisterPage/registerPage"
 import { SelectTable } from "../pages/SelectTablePage/selectTable"
+import { TablePage } from "../pages/TablesPage/tablePage"
 
 export const Router = ()=>{
     return(
@@ -29,6 +30,7 @@ export const Router = ()=>{
                 <Route path="/mesas" element={<SelectTable/>}/>
                 <Route path="/pagamentoConcluido" element={<PaymentScreen/>}/>
                 <Route path="/perfil" element={<ProfilePage/>}/>
+                <Route path="/adminMesas" element={<TablePage/>}/>
             </Routes>
         </BrowserRouter>
     )
