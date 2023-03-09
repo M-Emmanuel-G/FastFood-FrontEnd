@@ -8,6 +8,7 @@ import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { ContainerBanner, ContainerLocal, ContainerRegister } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { URL_BASE } from "../../constants/URL"
 
 export const RegisterPage = ()=>{
     const [cpf, setCpf] = useState('')
@@ -25,7 +26,7 @@ export const RegisterPage = ()=>{
         }
 
         axios
-            .post('http://localhost:3003/fastfood/users/signup', body)
+            .post(`${URL_BASE}/fastfood/users/signup`, body)
             .then((resp)=>{
                 toast.success(`Registro criado com sucesso. Agora ja pode realizar o seu login!`)
                 navigate('/login')

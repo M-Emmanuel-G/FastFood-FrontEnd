@@ -7,13 +7,14 @@ import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { ContainerAdminOrder } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { URL_BASE } from "../../constants/URL"
 
 export const AdminOrders = (id)=>{
-    const [data,isLoading, error, page, setPage] = useRequestData(`http://localhost:3003/fastfood/order/show`)
+    const [data,isLoading, error, page, setPage] = useRequestData(`${URL_BASE}/fastfood/order/show`)
 
     const confirmOrder= (id)=>{
         axios
-            .delete(`http://localhost:3003/fastfood/order/myorders/delete/${id}`)
+            .delete(`${URL_BASE}/fastfood/order/myorders/delete/${id}`)
                 .then((resp)=>{
                     setPage(!page)
                     toast.success(`Seu pedido será excluido em alguns instantes.`)

@@ -7,6 +7,7 @@ import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { ContainerProduct } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { URL_BASE } from "../../constants/URL"
 
 export const CreatePage = ()=>{
 
@@ -24,7 +25,7 @@ export const CreatePage = ()=>{
             category
         }
         axios
-            .post('http://localhost:3003/fastfood/products/create', body)
+            .post(`${URL_BASE}/fastfood/products/create`, body)
             .then((resp)=>{
                 toast.success(resp.data.message)
             })

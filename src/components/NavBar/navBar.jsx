@@ -3,12 +3,13 @@ import { ContainerNavBar } from "./style"
 import axios from 'axios';
 import useRequestData from '../../hooks/useRequestData';
 import { toast } from 'react-toastify';
+import { URL_BASE } from "../../constants/URL";
 
 
 export const NavBar = ()=>{
     const navigate = useNavigate()
 
-    const [data] = useRequestData(`http://localhost:3003/fastfood/users/profile/${localStorage.getItem('idUser')}`)
+    const [data] = useRequestData(`${URL_BASE}/fastfood/users/profile/${localStorage.getItem('idUser')}`)
     const logout = ()=>{
 
         console.log(data);
@@ -16,17 +17,17 @@ export const NavBar = ()=>{
             toast.error('Conta ainda está em aberto!')
         } else {
             axios
-                .get(`http://localhost:3003/fastfood/tables/vacateTable/${localStorage.getItem('idTable')}`)
+                .get(`${URL_BASE}/fastfood/tables/vacateTable/${localStorage.getItem('idTable')}`)
                 .then((resp)=>{navigate('/login')})
                 .catch((error)=>{console.log(error.response.message)})
     
             axios
-                .delete(`http://localhost:3003/fastfood/order/remove/${localStorage.getItem('idUser')}`)
+                .delete(`${URL_BASE}/fastfood/order/remove/${localStorage.getItem('idUser')}`)
                 .then((resp)=>{})
                 .catch((error)=>{console.log(error.data)})
 
             axios
-                .get(`http://localhost:3003/fastfood/users/notIsLogged/${localStorage.getItem('idUser')}`)   
+                .get(`${URL_BASE}/fastfood/users/notIsLogged/${localStorage.getItem('idUser')}`)   
                 .then((resp)=>{})
                 .catch((error)=>{console.log(error.data);}) 
         }

@@ -3,16 +3,17 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Footer } from "../../components/Footer/footer"
 import { Logo } from "../../components/logo/logo"
+import { URL_BASE } from "../../constants/URL"
 import useRequestData from "../../hooks/useRequestData"
 import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { CardTable, ContainerSelectTable } from "./style"
 
 export const SelectTable = ()=>{
-    const [data] = useRequestData(`http://localhost:3003/fastfood/tables/all`)
+    const [data] = useRequestData(`${URL_BASE}/fastfood/tables/all`)
     const navigate = useNavigate()
 
     useEffect(()=>{
-        axios.get(`http://localhost:3003/fastfood/users/profile/${localStorage.getItem('idUser')}`)
+        axios.get(`${URL_BASE}/fastfood/users/profile/${localStorage.getItem('idUser')}`)
         .then((resp)=>{})
     },[])
 
@@ -27,7 +28,7 @@ export const SelectTable = ()=>{
     const selectTable = (idTable)=>{
         localStorage.setItem('idTable', idTable)
         axios.
-            get(`http://localhost:3003/fastfood/tables/select/idClient/${localStorage.getItem('idUser')}/idTable/${idTable}`)
+            get(`${URL_BASE}/fastfood/tables/select/idClient/${localStorage.getItem('idUser')}/idTable/${idTable}`)
             .then((resp)=>{
                 navigate('/home')
             })

@@ -10,9 +10,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Logo } from "../../components/logo/logo"
 import { useNavigate } from "react-router-dom"
+import { URL_BASE } from "../../constants/URL"
 
 export const HomePage = ()=>{
-const [data, isLoading] = useRequestData('http://localhost:3003/fastfood/products/show')
+const [data, isLoading] = useRequestData(`${URL_BASE}/fastfood/products/show`)
 const context = useContext(GlobalStateContext)
 const [search, setSearch] = useState('')
 const navigate = useNavigate()

@@ -6,6 +6,7 @@ import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { ContainerBanner, ContainerLogin } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { URL_BASE } from "../../constants/URL"
 
 export const LoginPage = ()=>{
     const [cpf, setCpf] = useState(``)
@@ -20,7 +21,7 @@ export const LoginPage = ()=>{
         }
         
         axios
-            .post('http://localhost:3003/fastfood/users/login', body)
+            .post(`${URL_BASE}/fastfood/users/login`, body)
             .then((resp)=>{
 
                     localStorage.setItem('idUser', resp.data.token[0].id)
@@ -35,7 +36,7 @@ export const LoginPage = ()=>{
                 })
                 
                 axios
-                .get(`http://localhost:3003/fastfood/users/notPayment/${localStorage.getItem('idUser')}`)
+                .get(`${URL_BASE}/fastfood/users/notPayment/${localStorage.getItem('idUser')}`)
                 .then((resp)=>{})
                 .catch((error)=>{console.log(error);})    
                 

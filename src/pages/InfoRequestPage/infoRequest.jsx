@@ -9,23 +9,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import useRequestData from '../../hooks/useRequestData'
 import { Logo } from '../../components/logo/logo'
 import { GlobalStateContext } from '../../GlobalState/GlobalStateContext'
+import { URL_BASE } from '../../constants/URL'
 
 export const InfoRequest = ()=>{
     const [table, setTable] = useState('')
     const context = useContext(GlobalStateContext)
 
     useEffect(()=>{
-        axios.get(`http://localhost:3003/fastfood/users/profile/${localStorage.getItem('idUser')}`)
+        axios.get(`${URL_BASE}/fastfood/users/profile/${localStorage.getItem('idUser')}`)
         .then((resp)=>{
             setTable(resp.data[0].table_name)
         })
     },[])
 
-    const [data, isLoading, error, page, setPage] = useRequestData(`http://localhost:3003/fastfood/order/myorders/${localStorage.getItem('idUser')}`)
+    const [data, isLoading, error, page, setPage] = useRequestData(`${URL_BASE}/fastfood/order/myorders/${localStorage.getItem('idUser')}`)
     
      const deleteOrder = (id)=>{
         axios
-            .delete(`http://localhost:3003/fastfood/order/myorders/delete/${id}`)
+            .delete(`${URL_BASE}/fastfood/order/myorders/delete/${id}`)
                 .then((resp)=>{
                     toast.success(`${resp.data}`)
                     setPage(!page)

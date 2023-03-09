@@ -10,9 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Logo } from "../../components/logo/logo"
 import useRequestData from "../../hooks/useRequestData"
 import { useNavigate } from "react-router-dom"
+import { URL_BASE } from "../../constants/URL"
 
 export const PaymentPage = ()=>{
-    const [data] = useRequestData(`http://localhost:3003/fastfood/order/myorders/${localStorage.getItem('idUser')}`)
+    const [data] = useRequestData(`${URL_BASE}/fastfood/order/myorders/${localStorage.getItem('idUser')}`)
     
     const context = useContext(GlobalStateContext)
     const sumPay = context.myOrders.map((order)=> order.quantity * order.price).reduce((a,b)=> a + b ,0)
@@ -41,12 +42,12 @@ export const PaymentPage = ()=>{
 
      const sendPayment = ()=>{
         axios
-            .get(`http://localhost:3003/fastfood/users/payment/${localStorage.getItem('idUser')}`)
+            .get(`${URL_BASE}/fastfood/users/payment/${localStorage.getItem('idUser')}`)
             .then((resp)=>{navigate('/pagamentoConcluido')})
             .catch((error)=>{console.log(error.response)})
 
         axios
-            .get(`http://localhost:3003/fastfood/users/finalizeBill/${localStorage.getItem('idUser')}`)
+            .get(`${URL_BASE}/fastfood/users/finalizeBill/${localStorage.getItem('idUser')}`)
             .then((resp)=>{})
             .catch((error)=>{console.log(error.response.data);})
      }
