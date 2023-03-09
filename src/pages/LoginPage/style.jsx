@@ -62,3 +62,13 @@ export const ContainerBanner = styled.div`
         height: 100%;
     }
 `
+
+export const ContainerLoading = styled.div`
+    width: 20%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    opacity: 0;
+`
