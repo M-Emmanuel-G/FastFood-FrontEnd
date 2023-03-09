@@ -4,6 +4,7 @@ import { GlobalStateContext } from "../../GlobalState/GlobalStateContext"
 import { ContainerCard } from "./style"
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { URL_BASE } from "../../constants/URL";
 
 export const CardProduct = (props)=>{
     const context = useContext(GlobalStateContext)
@@ -11,7 +12,7 @@ export const CardProduct = (props)=>{
 
     const addCart = (product)=>{
      axios
-            .get(`http://localhost:3003/fastfood/order/neworder/idClient/${localStorage.getItem('idUser')}/idProduct/${product.id}/quantity/${qtd}/idTable/${localStorage.getItem('idTable')}`)  
+            .get(`${URL_BASE}/fastfood/order/neworder/idClient/${localStorage.getItem('idUser')}/idProduct/${product.id}/quantity/${qtd}/idTable/${localStorage.getItem('idTable')}`)  
             .then((resp)=>{
                 toast.success(resp.data.message)
             })

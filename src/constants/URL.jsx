@@ -1,0 +1,1 @@
+export const URL_BASE = 'https://fastfood-fr5e.onrender.com'
