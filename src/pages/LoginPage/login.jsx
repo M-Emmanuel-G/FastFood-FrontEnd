@@ -1,9 +1,8 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { GlobalStateContext } from "../../GlobalState/GlobalStateContext"
-import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
-import { ContainerBanner, ContainerLogin } from "./style"
+import { AnimLoading, ContainerBase, ContainerMobile } from "../../style/globalStyle"
+import { ContainerBanner, ContainerLoading, ContainerLogin } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { URL_BASE } from "../../constants/URL"
@@ -11,10 +10,11 @@ import { URL_BASE } from "../../constants/URL"
 export const LoginPage = ()=>{
     const [cpf, setCpf] = useState(``)
     const navigate = useNavigate()
-    const context = useContext(GlobalStateContext)
 
     const sendLogin = (ev)=>{
         ev.preventDefault()
+        document.getElementById('loading').style.opacity = 1
+        
 
         const body = {
             cpf
@@ -32,6 +32,7 @@ export const LoginPage = ()=>{
                     
                 })
                 .catch((error)=>{
+                document.getElementById('loading').style.opacity = 0
                     toast.error(error.response.data)
                 })
                 
@@ -51,6 +52,9 @@ export const LoginPage = ()=>{
                 <ContainerBanner>
                     <img src="https://t4.ftcdn.net/jpg/02/75/70/03/360_F_275700347_09reCCwb7JBxTKiYQXsyri4riMKaHbj8.jpg"/>
                 </ContainerBanner>
+                <ContainerLoading id="loading">
+                    <AnimLoading/>
+                </ContainerLoading>
                     <form onSubmit={sendLogin}>
                         <input
                             type='text'
