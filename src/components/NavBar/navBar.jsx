@@ -39,6 +39,7 @@ export const NavBar = ()=>{
         <ContainerNavBar>
             <img onClick={()=>{navigate('/home')}} src='https://cdn-icons-png.flaticon.com/512/6490/6490332.png'/>
             <img onClick={()=>{navigate('/meuspedidos')}} src='https://cdn-icons-png.flaticon.com/512/6384/6384773.png'/>
+            <img onClick={()=>{navigate('/mensagens')}} src='https://cdn-icons-png.flaticon.com/512/9662/9662347.png'/>
             <img onClick={()=>{navigate('/pagamento')}} src='https://cdn-icons-png.flaticon.com/512/71/71227.png' />
             <img onClick={logout} src='https://cdn-icons-png.flaticon.com/512/126/126467.png' />
         </ContainerNavBar>

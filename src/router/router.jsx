@@ -6,6 +6,7 @@ import { HomePage } from "../pages/HomePage/homepage"
 import { InfoRequest } from "../pages/InfoRequestPage/infoRequest"
 import { LoginPage } from "../pages/LoginPage/login"
 import { MenuPage } from "../pages/MenuPage/menuPage"
+import { MessagePage } from "../pages/messagesPage/messagesPage"
 import { PaymentScreen } from "../pages/paymentSuccess/paymentScreen"
 import { PaymentPage } from "../pages/PayTheBill/payment"
 import { ProfilePage } from "../pages/ProfilePage/profilePage"
@@ -31,6 +32,7 @@ export const Router = ()=>{
                 <Route path="/pagamentoConcluido" element={<PaymentScreen/>}/>
                 <Route path="/perfil" element={<ProfilePage/>}/>
                 <Route path="/adminMesas" element={<TablePage/>}/>
+                <Route path="/mensagens" element={<MessagePage/>}/>
             </Routes>
         </BrowserRouter>
     )

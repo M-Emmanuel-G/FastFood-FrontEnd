@@ -3,7 +3,7 @@ import { Footer } from "../../components/Footer/footer"
 import { Logo } from "../../components/logo/logo"
 import { NavAdmin } from "../../components/NavBarAdmin/navBarAdmin"
 import useRequestData from "../../hooks/useRequestData"
-import { ContainerBase, ContainerMobile } from "../../style/globalStyle"
+import { AnimLoading, ContainerBase, ContainerMobile } from "../../style/globalStyle"
 import { ContainerAdminOrder } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,26 +13,25 @@ export const AdminOrders = (id)=>{
     const [data,isLoading, error, page, setPage] = useRequestData(`${URL_BASE}/fastfood/order/show`)
 
     const confirmOrder= (id)=>{
+
+        const body = {
+            message:' Obrigado por aguardar.. Em instantes seu pedido chegará em sua mesa...'
+        }
+
+        axios   
+            .post(`${URL_BASE}/fastfood/messages/sendMessage/${localStorage.getItem('idUser')}`, body)
+            .then((resp)=>{console.log(resp.data)})
+            .catch((error)=>{console.log(error);})
+
         axios
             .delete(`${URL_BASE}/fastfood/order/myorders/delete/${id}`)
                 .then((resp)=>{
                     setPage(!page)
-                    toast.success(`Seu pedido será excluido em alguns instantes.`)
+                    toast.success(`Mensagem foi enviada ao cliente.`)
                 })
                 .catch((error)=>{
                     console.log(error.response)
                 })
-    }
-
-    const problemOrder= (id)=>{
-        // axios
-        //     .delete(`http://localhost:3003/fastfood/order/myorders/remove/${id}`)
-        //         .then((resp)=>{
-        //             toast.success(`${resp.data}.. Seu pedido será excluido em alguns instantes.`)
-        //         })
-        //         .catch((error)=>{
-        //             console.log(error.response)
-        //         })
     }
 
     const renderOrders = data && data.map((order, key)=>{
@@ -43,10 +42,7 @@ export const AdminOrders = (id)=>{
                     <td>{order.product}</td>
                     <td>{order.quantity}</td>
                     <td>
-                        <div>
-                            <img onClick={()=>{confirmOrder(order.fk_product)}} src="https://cdn-icons-png.flaticon.com/512/5197/5197544.png"/>
-                            <img onClick={()=>{problemOrder(order.fk_product)}} src="https://cdn-icons-png.flaticon.com/512/6784/6784643.png"/>
-                        </div>
+                        <img onClick={()=>{confirmOrder(order.fk_product)}} src="https://cdn-icons-png.flaticon.com/512/5197/5197544.png"/>
                     </td>
                 </tr>
             
@@ -57,16 +53,17 @@ export const AdminOrders = (id)=>{
             <ContainerMobile>
                 <Logo/>
                 <ContainerAdminOrder>
-                    <table border={1}>
+                    <table border={0}>
                         <tbody>
                             <tr>
                                 <th>Cliente</th>
                                 <th>Mesa</th>
                                 <th>produto</th>
                                 <th>Qtd</th>
-                                <th>status</th>
+                                <th>Finalizar</th>
                             </tr>
-                            {renderOrders}
+                            {isLoading && <AnimLoading/>}
+                            {!isLoading && renderOrders}
                         </tbody>
                     </table>
                 </ContainerAdminOrder>

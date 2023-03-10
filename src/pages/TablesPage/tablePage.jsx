@@ -27,19 +27,26 @@ export const TablePage = ()=>{
         })
         .catch((error)=>{console.log(error.response);})
     }
-    const [data] = useRequestData(`${URL_BASE}/fastfood/tables/showTables`)
+    const [data, isLoading, error, page, setPage] = useRequestData(`${URL_BASE}/fastfood/tables/showTables`)
+
+    const deleteTable = (id)=>{
+        axios
+            .delete(`${URL_BASE}/fastfood/tables/delete/${id}`)
+                .then((resp)=>{
+                    setPage(!page) 
+                    toast.success('Mesa excluida...')
+                    })
+                .catch((error)=>{console.log(error.response);})
+    }
 
     const renderTables = data && data.map((table, key)=>{
-        console.log(table);
         return(
             <div key={key}>
                 <span>{table.table_name}</span>
-                <button>X</button>
+                <button onClick={()=>{deleteTable(table.id)}}>X</button>
             </div>
         )
     })
-
-    console.log(data);
 
     return(
         <ContainerBase>

@@ -14,7 +14,6 @@ import { URL_BASE } from "../../constants/URL"
 
 export const HomePage = ()=>{
 const [data, isLoading] = useRequestData(`${URL_BASE}/fastfood/products/show`)
-const context = useContext(GlobalStateContext)
 const [search, setSearch] = useState('')
 const navigate = useNavigate()
 
