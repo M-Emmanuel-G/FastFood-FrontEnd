@@ -16,18 +16,12 @@ export const ContainerInfo = styled.div`
     align-items: center;
     overflow: auto;
     div{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0.1rem 0;
         span{
             margin: 0rem 0;
         }
 
         span, button{
-            margin: 0 1rem;
+            margin: 0.2rem 1rem;
         }
 
         button{
@@ -36,6 +30,7 @@ export const ContainerInfo = styled.div`
             height: 30px;
             border: 0;
             font-size:1rem;
+            color: red;
         }
     }
 `

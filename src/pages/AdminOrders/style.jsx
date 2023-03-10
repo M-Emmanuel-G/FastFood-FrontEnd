@@ -14,16 +14,12 @@ export const ContainerAdminOrder = styled.div`
             td{
                 width: 100px;
                 height: 90px;
-                div{
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
                     img{
                         width: 30px;
                         height: 30px;
                         margin: 0.3rem 0;
                     }
-                }
+                
             }
         }
     }
