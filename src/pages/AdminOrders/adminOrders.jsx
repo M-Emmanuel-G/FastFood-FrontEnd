@@ -4,7 +4,7 @@ import { Logo } from "../../components/logo/logo"
 import { NavAdmin } from "../../components/NavBarAdmin/navBarAdmin"
 import useRequestData from "../../hooks/useRequestData"
 import { AnimLoading, ContainerBase, ContainerMobile } from "../../style/globalStyle"
-import { ContainerAdminOrder } from "./style"
+import { CardOrder, ContainerAdminOrder } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { URL_BASE } from "../../constants/URL"
@@ -36,15 +36,25 @@ export const AdminOrders = (id)=>{
 
     const renderOrders = data && data.map((order, key)=>{
         return(
-               <tr key={key}>
-                    <td>{order.name}</td>
-                    <td>{order.table_name}</td>
-                    <td>{order.product}</td>
-                    <td>{order.quantity}</td>
-                    <td>
-                        <img onClick={()=>{confirmOrder(order.fk_product)}} src="https://cdn-icons-png.flaticon.com/512/5197/5197544.png"/>
-                    </td>
-                </tr>
+               <CardOrder key={key}>
+                    <div>
+                        <label>Cliente: </label>
+                        <span>{order.name}</span>
+                    </div>
+                    <div>
+                        <label>Mesa: </label>
+                        <span>{order.table_name}</span>
+                    </div>
+                    <div>
+                        <label>Pedido: </label>
+                        <span>{order.product}</span>
+                    </div>
+                    <div>
+                        <label>Quantidade:</label>
+                        <span>{order.quantity}</span>
+                    </div>
+                    <img onClick={()=>{confirmOrder(order.fk_product)}} src="https://cdn-icons-png.flaticon.com/512/5197/5197544.png"/>
+                </CardOrder>
             
         )
     })
@@ -53,19 +63,8 @@ export const AdminOrders = (id)=>{
             <ContainerMobile>
                 <Logo/>
                 <ContainerAdminOrder>
-                    <table border={0}>
-                        <tbody>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Mesa</th>
-                                <th>produto</th>
-                                <th>Qtd</th>
-                                <th>Finalizar</th>
-                            </tr>
-                            {isLoading && <AnimLoading/>}
-                            {!isLoading && renderOrders}
-                        </tbody>
-                    </table>
+                    {isLoading && <AnimLoading/>}
+                    {!isLoading && renderOrders}
                 </ContainerAdminOrder>
                 <NavAdmin/>
                 <Footer/>

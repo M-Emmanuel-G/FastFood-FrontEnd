@@ -47,7 +47,7 @@ export const LoginPage = ()=>{
             <ContainerMobile>
                 <ContainerLogin>
                     <section>
-                        <img onClick={()=>{navigate('/admin')}} src="https://cdn-icons-png.flaticon.com/512/78/78948.png"/>
+                        <img onClick={()=>{navigate('/adminOrders')}} src="https://cdn-icons-png.flaticon.com/512/78/78948.png"/>
                     </section>
                 <ContainerBanner>
                     <img src="https://t4.ftcdn.net/jpg/02/75/70/03/360_F_275700347_09reCCwb7JBxTKiYQXsyri4riMKaHbj8.jpg"/>
