@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Footer } from '../../components/Footer/footer'
 import { NavBar } from '../../components/NavBar/navBar'
 import { AnimLoading, ContainerBase, ContainerMobile} from '../../style/globalStyle'
-import {  ContainerInfoRequest, ContainerList, ContainerSendOrder,} from './style'
+import {  CardOrder, ContainerInfoRequest, ContainerList, ContainerSendOrder,} from './style'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useRequestData from '../../hooks/useRequestData'
@@ -40,11 +40,11 @@ export const InfoRequest = ()=>{
         localStorage.setItem('idOrder', order.id)
         context.setCart(order)
         return(
-            <tr key={key}>
-                <td><span>{order.quantity}x</span></td>
-                <p>{order.product}</p>
-                <td><img src='https://cdn-icons-png.flaticon.com/512/2496/2496229.png' onClick={()=>{deleteOrder(order.id)}}/></td>
-            </tr>
+            <CardOrder key={key}>
+                <span>{order.quantity}x</span>
+                <span>{order.product}</span>
+                <img src='https://cdn-icons-png.flaticon.com/512/2496/2496229.png' onClick={()=>{deleteOrder(order.id)}}/>
+            </CardOrder>
         )
     })
     return(
@@ -52,16 +52,12 @@ export const InfoRequest = ()=>{
             <ContainerMobile>
                 <Logo/>
                 <ContainerInfoRequest>
-                    <div>
-                        <span>{table}</span>
-                    </div>
+                    <header>
+                        <p>{table}</p>
+                    </header>
                     <ContainerList>
-                        <table border={1}>
-                            <tbody>
                             {isLoading&& <AnimLoading/>}
                             {!isLoading&&renderList}
-                            </tbody>
-                        </table>
                     </ContainerList>
                 </ContainerInfoRequest>
                 <NavBar/>

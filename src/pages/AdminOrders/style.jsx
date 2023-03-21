@@ -31,22 +31,27 @@ export const CardOrder = styled.div`
     border-radius: 10px;
     border: 1px solid black;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     margin-top: 1rem;
-    button{
-        width: 120px;
-        height: 20px;
+    img{
+        width: 30px;
+        height: 30px;
         margin: 0.5rem 0.5rem;
         border: 0;
         border-radius: 10px;
     }
-  
-    .btnRed{
-        background: red;
+    div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        label{
+            margin-left: 1rem;
+            font-weight: bold;
+        }
+        span{
+            margin-left: 0.5rem;
+        }
     }
-    .btnGreen{
-        background: green;
-    }
-
 `

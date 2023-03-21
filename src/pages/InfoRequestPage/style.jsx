@@ -7,67 +7,27 @@ export const ContainerInfoRequest = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    header{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    section{
+        width: 100%;
+        height: 90%;
+        background: blue;
+    }
+
 `
 
 export const ContainerList = styled.div`
     width: 100%;
     height: 90%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-direction: column;
-    text-align: center;
-    overflow-y: auto;
-    background: #fff;
-
-   div{
-    display: flex;
-    flex-direction: column;
-    section{
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 1rem 0;
-        background: rgba(1,1,1,0.3);
-        border-radius: 20px;
-        button{
-            width: 50px;
-            height: 40px;
-            margin: 0 2rem;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            border-radius: 50%;
-        }
-    }
-   }
-    table{
-        width: 100%;
-        tbody{
-            tr{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            td{
-                width: 30px;
-                height: 30px;
-                border: 0;
-                img{
-                width: 30px;
-                height: 30px;
-                margin-right: 1rem;
-                font-size: 1.2rem;
-                border: 0;
-                color: red;
-            }
-            }
-            span{
-                margin-left: 1rem;
-            }
-            }
-        }
-   }
 `
 
 export const ContainerSendOrder = styled.div`
@@ -93,6 +53,24 @@ export const ContainerSendOrder = styled.div`
         border: 1px solid black;
         background: lightgreen;
         border-radius: 10px;
+    }
+`
+
+export const CardOrder = styled.div`
+    width: 98%;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    img{
+        width: 30px;
+        height: 30px;
+    }
+    span, img{
+        margin: 0 1rem;
     }
 `
 

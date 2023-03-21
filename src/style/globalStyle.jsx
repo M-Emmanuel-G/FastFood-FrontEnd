@@ -12,7 +12,7 @@ export const ContainerBase = styled.div`
 
 export const ContainerMobile = styled.div`
     width: 376px;
-    height: 650px;
+    height: 667px;
     border: 2px solid black;
     border-radius: 10px;
     display: flex;
