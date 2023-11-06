@@ -2,13 +2,14 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AnimLoading, ContainerBase, ContainerMobile } from "../../style/globalStyle"
-import { ContainerBanner, ContainerLoading, ContainerLogin } from "./style"
+import { ContainerBanner, ContainerIconAdmin, ContainerInfo, ContainerLoading, ContainerLogin, ContainerSendLogin } from "./style"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { URL_BASE } from "../../constants/URL"
 
 export const LoginPage = ()=>{
     const [cpf, setCpf] = useState(``)
+    const [err, setErr] = useState('')
     const navigate = useNavigate()
 
     const sendLogin = (ev)=>{
@@ -33,7 +34,7 @@ export const LoginPage = ()=>{
                 })
                 .catch((error)=>{
                 document.getElementById('loading').style.opacity = 0
-                    toast.error(error.response.data)
+                    setErr(error.response.data)
                 })
                 
                 axios
@@ -42,32 +43,34 @@ export const LoginPage = ()=>{
                 .catch((error)=>{console.log(error);})    
                 
     }
+
     return(
         <ContainerBase>
             <ContainerMobile>
-                <ContainerLogin>
-                    <section>
-                        <img onClick={()=>{navigate('/adminOrders')}} src="https://cdn-icons-png.flaticon.com/512/78/78948.png"/>
-                    </section>
+                <ContainerIconAdmin>
+                    <img onClick={()=>{navigate('/adminOrders')}} src="https://cdn-icons-png.flaticon.com/512/78/78948.png"/>
+                </ContainerIconAdmin>
                 <ContainerBanner>
                     <img src="https://t4.ftcdn.net/jpg/02/75/70/03/360_F_275700347_09reCCwb7JBxTKiYQXsyri4riMKaHbj8.jpg"/>
                 </ContainerBanner>
-                <ContainerLoading id="loading">
-                    <AnimLoading/>
+                <ContainerLoading>
+                    <AnimLoading id="loading"/>
                 </ContainerLoading>
-                    <form onSubmit={sendLogin}>
-                        <input
-                            type='text'
-                            maxLength={11}
-                            placeholder="Digite seu CPF..."
-                            onChange={(ev)=>{setCpf(ev.target.value)}}
-                            value={cpf}
-                            required
-                        />
-                        <button disabled={cpf.length < 11}>Logar</button>
-                        <button onClick={()=>{navigate('/signup')}}>Registrar</button>
-                    </form>
-                </ContainerLogin>
+                <ContainerInfo>
+                    <span>{err}</span>
+                </ContainerInfo>
+                <ContainerSendLogin onSubmit={sendLogin}>
+                    <input
+                        type='text'
+                        maxLength={11}
+                        placeholder="Digite seu CPF..."
+                        onChange={(ev)=>{setCpf(ev.target.value)}}
+                        value={cpf}
+                        required
+                    />
+                    <button disabled={cpf.length < 11}>Logar</button>
+                    <button onClick={()=>{navigate('/signup')}}>Registrar</button>
+                </ContainerSendLogin>
             </ContainerMobile>
             <ToastContainer/>
         </ContainerBase>

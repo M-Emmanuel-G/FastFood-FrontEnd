@@ -5,70 +5,75 @@ export const ContainerLogin = styled.div`
     height: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    section{
-        img{
+   
+`
+
+export const ContainerIconAdmin = styled.div`
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    img{
         width: 30px;
         height: 30px;
-        position: relative;
-        right: 0
-     } 
     }
-    
-    div{
-        display: flex;
-        flex-direction: column;
-    }
-    input{
-            width: 300px;
-            height:30px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1rem;
-            border: none;
-            border-bottom: 1px solid black;
-            background: transparent;
-            outline: 0;
-            margin-top: 1rem;
-            ::placeholder{
-                text-align: center;
-                font-weight: bold;
-                font-size: 1rem;
-            }
-        }
-        button{
-            width: 300px;
-            height: 50px;
-            margin-top: 1rem;
-            border-radius: 20px;
-            border: 1px solid black;
-            background: none;
-        }
-    form{
-        display: flex;
-        flex-direction: column;
-        margin-top: 3rem;
-    }
+`
+
+export const ContainerLogo = styled.div`
+    width: 100%;
+    height: 30%;
 `
 
 export const ContainerBanner = styled.div`
     width: 100%;
-    height: 50%;
-    background: green;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img{
-        width: 100%;
+        width: 400px;
         height: 100%;
     }
 `
 
 export const ContainerLoading = styled.div`
-    width: 20%;
+    width: 100%;
     height: 10%;
     display: flex;
     justify-content: center;
     align-content: center;
     text-align: center;
     opacity: 0;
+`
+
+export const ContainerSendLogin = styled.form`
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    button, input{
+        width: 270px;
+        height:30px;
+        margin:0.5rem 0;
+        text-align:center;
+        border-bottom: 1px solid #000;
+        background:0;
+        border-radius: 12px;
+        outline:0;
+    }
+`
+
+export const ContainerInfo = styled.div`
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+        color: #f2312e;
+    }
 `

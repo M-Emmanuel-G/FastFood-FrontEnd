@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const ContainerMessages = styled.div`
     width: 100%;
-    height: 75%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
 `
 
 export const CardMessage = styled.div`
-    width: 90%;
+    width: 90%:
     height: 100px;
     border: 2px solid black;
     border-radius: 10px;
@@ -36,6 +36,7 @@ export const ContainerListMessage = styled.div`
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
+    
 
     div{
         width: 300px;

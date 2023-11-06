@@ -3,10 +3,9 @@ import styled, { keyframes } from "styled-components";
 export const ContainerBase = styled.div`
     width: 100vw;
     height: 100vh;
-    background: grey;
+    background: #F1F1F1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 `
 

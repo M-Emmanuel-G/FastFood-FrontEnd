@@ -56,7 +56,6 @@ export const SelectTable = ()=>{
                     <span>{localStorage.getItem('nameUser')}, escolha sua mesa:</span>
                     {verify()}
                 </ContainerSelectTable>
-                <Footer/>
             </ContainerMobile>
         </ContainerBase>
     )

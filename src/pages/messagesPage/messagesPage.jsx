@@ -40,7 +40,6 @@ export const MessagePage = ()=>{
                     </ContainerListMessage>
                 </ContainerMessages>
                 <NavBar/>
-                <Footer/>
             </ContainerMobile>
             <ToastContainer/>
         </ContainerBase>

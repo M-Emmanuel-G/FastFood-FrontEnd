@@ -61,7 +61,6 @@ export const InfoRequest = ()=>{
                     </ContainerList>
                 </ContainerInfoRequest>
                 <NavBar/>
-                <Footer/>
             </ContainerMobile>
             <ToastContainer/>
         </ContainerBase>
